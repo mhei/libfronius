@@ -1,0 +1,51 @@
+/*
+ * Copyright © 2009-2012 Michael Heimpold <mhei@heimpold.de>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
+ */
+
+#ifndef _FRONIUS_VERSION_H_
+#define _FRONIUS_VERSION_H_
+
+/* The major version, (1, if %LIBFRONIUS_VERSION is 1.2.3) */
+#define LIBFRONIUS_VERSION_MAJOR (@LIBFRONIUS_VERSION_MAJOR@)
+
+/* The minor version (2, if %LIBFRONIUS_VERSION is 1.2.3) */
+#define LIBFRONIUS_VERSION_MINOR (@LIBFRONIUS_VERSION_MINOR@)
+
+/* The micro version (3, if %LIBFRONIUS_VERSION is 1.2.3) */
+#define LIBFRONIUS_VERSION_MICRO (@LIBFRONIUS_VERSION_MICRO@)
+
+/* The full version, like 1.2.3 */
+#define LIBFRONIUS_VERSION        @LIBFRONIUS_VERSION@
+
+/* The full version, in string form (suited for string concatenation) */
+#define LIBFRONIUS_VERSION_STRING "@LIBFRONIUS_VERSION@"
+
+/* Numerically encoded version, like 0x010203 */
+#define LIBFRONIUS_VERSION_HEX ((LIBFRONIUS_MAJOR_VERSION << 24) |   \
+                                (LIBFRONIUS_MINOR_VERSION << 16) |   \
+                                (LIBFRONIUS_MICRO_VERSION << 8))
+
+/* Evaluates to True if the version is greater than @major, @minor and @micro */
+#define LIBFRONIUS_VERSION_CHECK(major,minor,micro)      \
+    (LIBFRONIUS_VERSION_MAJOR > (major) ||               \
+     (LIBFRONIUS_VERSION_MAJOR == (major) &&             \
+      LIBFRONIUS_VERSION_MINOR > (minor)) ||             \
+     (LIBFRONIUS_VERSION_MAJOR == (major) &&             \
+      LIBFRONIUS_VERSION_MINOR == (minor) &&             \
+      LIBFRONIUS_VERSION_MICRO >= (micro)))
+
+#endif /* _FRONIUS_VERSION_H_ */

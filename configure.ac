@@ -36,7 +36,7 @@ AC_INIT([libfronius], [libfronius_version], [https://github.com/mhei/libfronius/
 
 AC_CONFIG_HEADERS([config.h])
 
-AM_INIT_AUTOMAKE([foreign no-dist-gzip dist-bzip2])
+AM_INIT_AUTOMAKE([foreign no-dist-gzip dist-xz])
 # enable nice build output on automake1.11
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 

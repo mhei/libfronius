@@ -5,28 +5,11 @@ dnl SPDX-License-Identifier: LGPL-2.1+
 dnl
 
 dnl
-dnl Process this file with autoconf to produce a configure script.
-dnl
-
-dnl libfronius package version number, (as distinct from shared library version)
-dnl An odd micro number indicates in-progress development from Git
-dnl An even micro number indicates a released version
-dnl
-dnl Making a point release:
-dnl - increase libfronius_version_micro to the next even number
-dnl
-dnl After the release:
-dnl - increase libfronius_version_minor to the next odd number
-dnl
 dnl Take care to update the libtool versioning when required (LIBFRONIUS_LD_*).
-dnl http://www.gnu.org/software/libtool/manual/html_node/Libtool-versioning.html
 dnl
 m4_define([libfronius_version_major], [0])
 m4_define([libfronius_version_minor], [0])
 m4_define([libfronius_version_micro], [1])
-
-m4_define([libfronius_release_status],
-    [m4_if(m4_eval(libfronius_version_minor % 2), [1], [snapshot], [release])])
 
 m4_define([libfronius_version],
     [libfronius_version_major.libfronius_version_minor.libfronius_version_micro])

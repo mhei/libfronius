@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: LGPL-2.1+
 #
 
+#AM_CFLAGS = -Wall -pedantic
+
 lib_LTLIBRARIES = libfronius.la
 libfronius_la_SOURCES = \
     fronius_open.c \

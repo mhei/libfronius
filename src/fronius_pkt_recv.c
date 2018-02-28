@@ -72,8 +72,7 @@ int fronius_pkt_recv(struct fronius_dev *dev,
 
         /* does the buffer looks like a packet? */
         if (bytes_read >= FRONIUS_MIN_PKTLEN) {
-            switch (fronius_pkt_validate_header
-                    ((struct fronius_pkt *) buf)) {
+            switch (fronius_pkt_validate_header((struct fronius_pkt *) buf)) {
             case FRONIUS_ERR_NOERROR:
                 /* trim read to real packet length after
                    fronius_pkt_validate_header ensured maximum packet length */

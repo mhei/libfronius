@@ -31,6 +31,7 @@ static int fronius_setserialmode(struct fronius_dev *dev)
 
     if (rv = tcgetattr(dev->fd, dev->old_tio))
         goto free;
+
     memcpy(&new_tio, dev->old_tio, sizeof(new_tio));
 
     /* varios bits for raw mode */
@@ -57,7 +58,8 @@ static int fronius_setserialmode(struct fronius_dev *dev)
         goto free;
 
     rv = tcsetattr(dev->fd, TCSANOW, &new_tio);
-  free:
+
+free:
     /* free memory on error */
     if (rv) {
         free(dev->old_tio);
@@ -186,9 +188,10 @@ struct fronius_dev *fronius_open(const char *dev_name,
 
     return dev;
 
-  close:
+close:
     close(dev->fd);
-  free:
+
+free:
     free(dev);
     return NULL;
 }

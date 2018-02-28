@@ -48,7 +48,7 @@ fronius_error_t fronius_pkt_validate_header(const struct fronius_pkt *pkt)
     return FRONIUS_ERR_NOERROR;
 }
 
-fronius_error_t fronius_pkt_validate(const struct fronius_pkt * pkt)
+fronius_error_t fronius_pkt_validate(const struct fronius_pkt *pkt)
 {
     uint8_t *p = (uint8_t *) & pkt->length;
     uint8_t checksum = 0;
@@ -88,7 +88,7 @@ fronius_error_t fronius_pkt_iserror(const struct fronius_pkt * pkt)
 #define FRONIUS_RAWDUMP_FMT3 "0x%02x\n"
 #define FRONIUS_RAWDUMP_FMT3_STRLEN (5)
 
-int fronius_pkt_rawdump(FILE * stream, const char *prefix,
+int fronius_pkt_rawdump(FILE *stream, const char *prefix,
                         const struct fronius_pkt *pkt)
 {
     char *buf1;
@@ -130,7 +130,7 @@ int fronius_pkt_rawdump(FILE * stream, const char *prefix,
 
 #define FRONIUS_HEADERDUMP_FMT "%s%slength=%d, device=%d, number=%d, command=0x%02x, checksum=%d\n"
 
-int fronius_pkt_headerdump(FILE * stream, const char *prefix,
+int fronius_pkt_headerdump(FILE *stream, const char *prefix,
                            const struct fronius_pkt *pkt)
 {
     return fprintf(stream ? : stderr, FRONIUS_HEADERDUMP_FMT,
@@ -139,7 +139,7 @@ int fronius_pkt_headerdump(FILE * stream, const char *prefix,
                    pkt->checksum);
 }
 
-int fronius_pkt_dump(FILE * stream, const char *prefix,
+int fronius_pkt_dump(FILE *stream, const char *prefix,
                      const struct fronius_pkt *pkt, int raw)
 {
     if (raw)

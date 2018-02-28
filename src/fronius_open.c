@@ -29,7 +29,7 @@ static int fronius_setserialmode(struct fronius_dev *dev)
     if (!dev->old_tio)
         return -1;
 
-    if (rv = tcgetattr(dev->fd, dev->old_tio))
+    if ((rv = tcgetattr(dev->fd, dev->old_tio)) == -1)
         goto free;
 
     memcpy(&new_tio, dev->old_tio, sizeof(new_tio));
@@ -49,12 +49,12 @@ static int fronius_setserialmode(struct fronius_dev *dev)
     new_tio.c_cflag |= CS8;
 
     /* set baudrate */
-    if (rv = cfsetispeed(&new_tio, dev->baudrate))
+    if ((rv = cfsetispeed(&new_tio, dev->baudrate)) == -1)
         goto free;
-    if (rv = cfsetospeed(&new_tio, dev->baudrate))
+    if ((rv = cfsetospeed(&new_tio, dev->baudrate)) == -1)
         goto free;
 
-    if (rv = tcflush(dev->fd, TCIOFLUSH))
+    if ((rv = tcflush(dev->fd, TCIOFLUSH)) == -1)
         goto free;
 
     rv = tcsetattr(dev->fd, TCSANOW, &new_tio);
@@ -65,6 +65,7 @@ free:
         free(dev->old_tio);
         dev->old_tio = NULL;
     }
+
     return rv;
 }
 

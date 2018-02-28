@@ -14,16 +14,15 @@
 
 int fronius_close(struct fronius_dev *dev)
 {
-    int fd, rv;
-
+    int fd;
 
     /* restore original serial settings if saved */
     if (dev->old_tio) {
-        if (rv = tcflush(dev->fd, TCIOFLUSH))
-            return rv;
+        if (tcflush(dev->fd, TCIOFLUSH) == -1)
+            return -1;
 
-        if (rv = tcsetattr(dev->fd, TCSANOW, dev->old_tio))
-            return rv;
+        if (tcsetattr(dev->fd, TCSANOW, dev->old_tio) == -1)
+            return -1;
     }
 
     fd = dev->fd;

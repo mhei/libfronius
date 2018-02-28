@@ -121,7 +121,7 @@ int fronius_pkt_rawdump(FILE *stream, const char *prefix,
     sprintf(buf2, FRONIUS_RAWDUMP_FMT3, pkt->checksum);
     strcat(buf1, buf2);
 
-    c = fprintf(stream ? : stderr, "%s", buf1);
+    c = fprintf(stream ? stream : stderr, "%s", buf1);
 
     free(buf1);
 
@@ -133,8 +133,8 @@ int fronius_pkt_rawdump(FILE *stream, const char *prefix,
 int fronius_pkt_headerdump(FILE *stream, const char *prefix,
                            const struct fronius_pkt *pkt)
 {
-    return fprintf(stream ? : stderr, FRONIUS_HEADERDUMP_FMT,
-                   prefix ? : "", prefix ? ": " : "",
+    return fprintf(stream ? stream : stderr, FRONIUS_HEADERDUMP_FMT,
+                   prefix ? prefix : "", prefix ? ": " : "",
                    pkt->length, pkt->device, pkt->number, pkt->command,
                    pkt->checksum);
 }

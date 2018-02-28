@@ -63,7 +63,7 @@ fronius_error_t fronius_cmd_ic_getversion(struct fronius_dev *dev,
     pkt.command = FRONIUS_CMD_IFCARD_GETVERSION;
 
     /* send, recv & validate */
-    if (rv = fronius_cmd_sendrecv(dev, &pkt))
+    if ((rv = fronius_cmd_sendrecv(dev, &pkt)) < 0)
         return rv;
     if (pkt.length != 4)
         return FRONIUS_ERR_INVALID_RESPONSE;
@@ -124,8 +124,8 @@ struct type_map_entry {
 fronius_error_t fronius_cmd_ic_getdevicetype(struct fronius_dev *dev,
                                              uint8_t device,
                                              uint8_t number,
-                                             char **device_name,
-                                             char **device_type)
+                                             const char **device_name,
+                                             const char **device_type)
 {
     struct fronius_pkt pkt;
     int rv;
@@ -138,7 +138,7 @@ fronius_error_t fronius_cmd_ic_getdevicetype(struct fronius_dev *dev,
     pkt.command = FRONIUS_CMD_IFCARD_GETDEVICETYPE;
 
     /* send, recv & validate */
-    if (rv = fronius_cmd_sendrecv(dev, &pkt))
+    if ((rv = fronius_cmd_sendrecv(dev, &pkt)) < 0)
         return rv;
     if (pkt.length > 1)
         return FRONIUS_ERR_INVALID_RESPONSE;
@@ -169,7 +169,7 @@ static fronius_error_t fronius_cmd_ic_querylist(struct fronius_dev *dev,
     pkt.command = cmd;
 
     /* send, recv & validate */
-    if (rv = fronius_cmd_sendrecv(dev, &pkt))
+    if ((rv = fronius_cmd_sendrecv(dev, &pkt)) < 0)
         return rv;
     if (pkt.length > maxlistsize)
         return FRONIUS_ERR_INVALID_RESPONSE;
@@ -210,7 +210,7 @@ fronius_error_t fronius_cmd_iv_getpowernow(struct fronius_dev *dev,
     pkt.command = FRONIUS_CMD_INVERTER_GETPOWERNOW;
 
     /* send, recv & validate */
-    if (rv = fronius_cmd_sendrecv(dev, &pkt))
+    if ((rv = fronius_cmd_sendrecv(dev, &pkt)) < 0)
         return rv;
     if (pkt.length > 3)
         return FRONIUS_ERR_INVALID_RESPONSE;
@@ -253,7 +253,7 @@ fronius_error_t fronius_cmd_iv_getvalue(struct fronius_dev *dev,
     pkt.command = cmd;
 
     /* send, recv & validate */
-    if (rv = fronius_cmd_sendrecv(dev, &pkt))
+    if ((rv = fronius_cmd_sendrecv(dev, &pkt)) < 0)
         return rv;
     if (pkt.length > 3)
         return FRONIUS_ERR_INVALID_RESPONSE;

@@ -86,7 +86,7 @@ int fronius_probe(const char *, fronius_ifc_type_t *, fronius_baudrate_t *);
 
 
 fronius_error_t fronius_cmd_ic_getversion(struct fronius_dev *, fronius_ifc_type_t *, char *, size_t);
-fronius_error_t fronius_cmd_ic_getdevicetype(struct fronius_dev *, uint8_t, uint8_t, char **, char **);
+fronius_error_t fronius_cmd_ic_getdevicetype(struct fronius_dev *, uint8_t, uint8_t, const char **, const char **);
 fronius_error_t fronius_cmd_ic_getactiveinverters(struct fronius_dev *, char *, size_t);
 fronius_error_t fronius_cmd_ic_getactivesensorss(struct fronius_dev *, char *, size_t);
 

@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: LGPL-2.1+
  */
 
-#ifndef _FRONIUS_H_
-#define _FRONIUS_H_
+#ifndef FRONIUS_H
+#define FRONIUS_H
 
 #include <termios.h>
 #include <fronius-version.h>
@@ -275,4 +275,4 @@ static const struct fronius_query_value fronius_cmds[] = {
 
 FRONIUS_END_DECLS
 
-#endif /* _FRONIUS_H_ */
+#endif /* FRONIUS_H */

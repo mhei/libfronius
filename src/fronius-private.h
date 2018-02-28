@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: LGPL-2.1+
  */
 
-#ifndef _FRONIUS_PRIVATE_H_
-#define _FRONIUS_PRIVATE_H_
+#ifndef FRONIUS_PRIVATE_H
+#define FRONIUS_PRIVATE_H
 
 #include <sys/time.h>
 #include <termios.h>
@@ -147,4 +147,4 @@ int fronius_pkt_recv(struct fronius_dev *, const struct fronius_pkt *);
 
 FRONIUS_END_DECLS
 
-#endif /* _FRONIUS_PRIVATE_H_ */
+#endif /* FRONIUS_PRIVATE_H */

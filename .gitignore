@@ -15,7 +15,6 @@ install-sh
 libtool
 ltmain.sh
 missing
-m4/
 libfronius.pc
 fronius-version.h
 .deps
@@ -28,3 +27,4 @@ stamp-h1
 doc/*.html
 doc/*.3
 doc/*.7
+tests/fronius_test

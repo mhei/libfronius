@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: GPL-3.0+
 #
 
-INCLUDES                = -I$(top_srcdir)/src
+AM_CPPFLAGS             = -I$(top_srcdir)/src
 
 bin_PROGRAMS            = fronius_test
 

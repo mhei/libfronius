@@ -20,6 +20,10 @@ AC_INIT([libfronius], [libfronius_version], [https://github.com/mhei/libfronius/
 AC_CONFIG_HEADERS([config.h])
 
 AM_INIT_AUTOMAKE([foreign no-dist-gzip dist-xz])
+AC_USE_SYSTEM_EXTENSIONS
+AC_CONFIG_MACRO_DIR([m4])
+AM_SILENT_RULES([yes])
+
 # enable nice build output on automake1.11
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
@@ -47,7 +51,7 @@ AC_CANONICAL_HOST
 
 AC_PROG_CC
 AC_PROG_MAKE_SET
-LT_INIT([disable-static])
+LT_INIT([disable-static pic-only])
 
 # Checks for header files
 AC_HEADER_STDC
